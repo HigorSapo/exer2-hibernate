@@ -1,5 +1,8 @@
 package br.fiap.roteiro.helper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -38,6 +41,18 @@ public class PedidosHelper {
 		} catch (Exception e) {
 			return e.getMessage();
 		}
+	}
+	
+	public List<Pedidos> listarPedidos(int idPedido) {
+		List<Pedidos> pedidos = new ArrayList<Pedidos>();
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Clientes c = (Clientes) session.load(Clientes.class, idPedido);
+			pedidos = c.getPedidos();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return pedidos;
 	}
 
 }
