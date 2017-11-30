@@ -18,7 +18,7 @@
 		<property name="hibernate.cache.use_query_cache">true</property>
 		<property name="hibernate.cache">trace</property>
 		<!-- Mapeamento de Classes -->
-		<mapping class="br.fiap.roteiro3.entity.Clientes" />
-		<mapping class="br.fiap.roteiro3.entity.Pedidos" />
+		<mapping class="br.fiap.roteiro.entity.Clientes" />
+		<mapping class="br.fiap.roteiro.entity.Pedidos" />
 	</session-factory>
 </hibernate-configuration>

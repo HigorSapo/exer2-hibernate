@@ -1,12 +1,15 @@
 package br.fiap.roteiro.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -27,6 +30,10 @@ public class Clientes implements Serializable {
 	@Column(name = "IDCLIENTE")
 	private Integer id;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "clientes", orphanRemoval = true)
+	@Column(name = "IDPEDIDO")
+	private List<Pedidos> pedidos;
+	
 	@Column(name = "NOME")
 	private String nome;
 	
@@ -36,6 +43,16 @@ public class Clientes implements Serializable {
 	public Integer getId() {
 		return id;
 	}
+	
+	public List<Pedidos> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedidos> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+
 
 	public void setId(Integer id) {
 		this.id = id;
